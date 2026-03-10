@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nahm Pla Thai Dishes — Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root {
+    --green: #8BBF26;
+    --green-dark: #6a9a1a;
+    --green-light: #c5e06a;
+    --green-pale: #f0f7d8;
+    --black: #1a1a1a;
+    --gray: #555;
+    --light: #fafaf5;
+    --white: #ffffff;
+    --accent: #e8f5c0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #e8e8e0;
+    color: var(--black);
+    min-height: 100vh;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 20px;
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+  }
+
+  .cover-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--green-pale);
+  }
+  .cover-bg-circle.c1 { width: 500px; height: 500px; top: -100px; right: -150px; opacity: 0.6; }
+  .cover-bg-circle.c2 { width: 300px; height: 300px; bottom: -80px; left: -80px; opacity: 0.4; }
+  .cover-bg-circle.c3 { width: 180px; height: 180px; bottom: 120px; right: 40px; opacity: 0.35; background: var(--green-light); }
+
+  .cover-dots {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle, var(--green-light) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    opacity: 0.18;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .cover-logo-area {
+    margin-bottom: 32px;
+  }
+
+  .logo-nahm {
+    font-family: 'Fredoka One', cursive;
+    font-size: 88px;
+    line-height: 1;
+    color: var(--green);
+    letter-spacing: -2px;
+    display: block;
+    text-shadow: 4px 4px 0 var(--green-light);
+  }
+
+  .logo-pla {
+    font-family: 'Fredoka One', cursive;
+    font-size: 108px;
+    line-height: 0.95;
+    color: var(--green);
+    letter-spacing: -2px;
+    display: block;
+    text-shadow: 4px 4px 0 var(--green-light);
+  }
+
+  .logo-sub {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-top: 12px;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--green);
+    margin: 28px auto;
+    border-radius: 2px;
+  }
+
+  .cover-tagline {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .cover-fish-deco {
+    margin: 28px auto 0;
+    font-size: 48px;
+    opacity: 0.15;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 32px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .green-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--green);
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .green-bar-bottom {
+    width: 100%;
+    height: 8px;
+    background: var(--green);
+    position: absolute;
+    bottom: 0; left: 0;
+  }
+
+  /* ── MENU PAGES ── */
+  .menu-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 20px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .menu-page-inner {
+    padding: 36px 40px 48px;
+  }
+
+  /* Header on menu pages */
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--green);
+  }
+
+  .page-header-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    color: var(--green);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .page-header-logo span {
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--black);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .page-header-tagline {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* Section heading */
+  .section {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 32px;
+    color: var(--green);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--green-pale);
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 18px;
+    padding-left: 2px;
+  }
+
+  /* Menu items */
+  .menu-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+  }
+
+  .menu-items.single-col {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed #e0e8c8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .item-name {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.2;
+    flex: 1;
+  }
+
+  .item-name .thai {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    display: block;
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  .item-price {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    color: var(--green-dark);
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .item-desc {
+    font-size: 11.5px;
+    color: var(--gray);
+    line-height: 1.5;
+    margin-top: 4px;
+    font-style: italic;
+    padding-right: 40px;
+  }
+
+  .item-tags {
+    display: flex;
+    gap: 4px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 9px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 20px;
+  }
+
+  .tag.vegan { background: #e8f5c0; color: #4a7c10; }
+  .tag.spicy { background: #fde8e8; color: #c0392b; }
+  .tag.gf    { background: #fef3e2; color: #c67c20; }
+  .tag.popular { background: #e8eeff; color: #2c4aaa; }
+  .tag.signature { background: var(--green); color: white; }
+
+  /* Two-column layout for full page */
+  .two-col-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+  }
+
+  /* Decorative elements */
+  .deco-blob {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--green-pale);
+    z-index: 0;
+  }
+
+  /* Special callout box */
+  .callout {
+    background: var(--green);
+    color: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .callout-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .callout-text {
+    font-size: 12px;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Page footer */
+  .page-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 40px; right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e8f0d0;
+    padding-top: 12px;
+  }
+
+  .page-footer-text {
+    font-size: 10px;
+    color: #aaa;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .page-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    color: var(--green-light);
+  }
+
+  /* Allergen note */
+  .allergen-note {
+    background: var(--green-pale);
+    border-left: 4px solid var(--green);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 20px;
+    font-size: 10.5px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .allergen-note strong {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: var(--green-dark);
+  }
+
+  /* Separator fish */
+  .fish-sep {
+    text-align: center;
+    color: var(--green-light);
+    font-size: 22px;
+    margin: 6px 0;
+    letter-spacing: 12px;
+  }
+
+  /* Spice indicator */
+  .spice {
+    color: #e74c3c;
+    font-size: 10px;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .cover, .menu-page { margin: 0; box-shadow: none; }
+  }
+
+  /* Screen presentation */
+  @media screen {
+    body { padding: 30px 0; }
+    .cover, .menu-page {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      border-radius: 4px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     COVER PAGE
+══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="green-bar"></div>
+  <div class="green-bar-bottom"></div>
+  <div class="cover-dots"></div>
+  <div class="cover-bg-circle c1"></div>
+  <div class="cover-bg-circle c2"></div>
+  <div class="cover-bg-circle c3"></div>
+
+  <div class="cover-content">
+    <div class="cover-logo-area">
+      <span class="logo-nahm">NAHM</span>
+      <span class="logo-pla">PLA</span>
+      <div class="logo-sub">Thai Dishes</div>
+    </div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-tagline">Washington, D.C.</div>
+
+    <div class="cover-fish-deco">🐟 🌿 🐟</div>
+  </div>
+
+  <div class="cover-footer">Authentic Thai Flavors &nbsp;·&nbsp; Fresh Ingredients &nbsp;·&nbsp; Made with Love</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAGE 1 — Starters & Soups
+══════════════════════════════════════════════ -->
+<div class="menu-page">
+  <div class="deco-blob" style="width:280px;height:280px;top:-60px;right:-80px;opacity:0.35;"></div>
+  <div class="menu-page-inner">
+
+    <div class="page-header">
+      <div class="page-header-logo">
+        Nahm Pla
+        <span>Thai Dishes</span>
+      </div>
+      <div class="page-header-tagline">Washington, D.C.</div>
+    </div>
+
+    <!-- APPETIZERS -->
+    <div class="section">
+      <div class="section-title">Starters</div>
+      <div class="section-subtitle">Begin your journey · เริ่มต้น</div>
+
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Spring Rolls <span class="thai">ปอเปี๊ยะทอด</span></div>
+            <div class="item-price">$9</div>
+          </div>
+          <div class="item-desc">Crispy rolls filled with glass noodles, cabbage, mushroom & carrot. Served with sweet chili sauce.</div>
+          <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Chicken Satay <span class="thai">ไก่สะเต๊ะ</span></div>
+            <div class="item-price">$12</div>
+          </div>
+          <div class="item-desc">Grilled chicken skewers marinated in turmeric & coconut milk. With peanut sauce & cucumber relish.</div>
+          <div class="item-tags"><span class="tag popular">Popular</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Fish Cakes <span class="thai">ทอดมันปลา</span></div>
+            <div class="item-price">$11</div>
+          </div>
+          <div class="item-desc">Traditional Thai fish cakes with kaffir lime leaf & red curry paste. Served with cucumber relish.</div>
+          <div class="item-tags"><span class="tag signature">Signature</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Edamame <span class="thai">ถั่วแระญี่ปุ่น</span></div>
+            <div class="item-price">$6</div>
+          </div>
+          <div class="item-desc">Lightly salted steamed edamame with a drizzle of Thai chili oil.</div>
+          <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Miang Kham <span class="thai">เมี่ยงคำ</span></div>
+            <div class="item-price">$13</div>
+          </div>
+          <div class="item-desc">Betel leaves wraps with coconut, dried shrimp, lime, ginger & roasted peanuts in sweet palm sugar sauce.</div>
+          <div class="item-tags"><span class="tag signature">Signature</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Shrimp Toast <span class="thai">ขนมปังหน้ากุ้ง</span></div>
+            <div class="item-price">$10</div>
+          </div>
+          <div class="item-desc">Crispy toast topped with minced shrimp & sesame seeds. Served with sweet plum sauce.</div>
+          <div class="item-tags"><span class="tag popular">Popular</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="fish-sep">— 🐠 —</div>
+
+    <!-- SOUPS -->
+    <div class="section">
+      <div class="section-title">Soups</div>
+      <div class="section-subtitle">Warm your soul · ซุป</div>
+
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Tom Yum <span class="thai">ต้มยำกุ้ง</span></div>
+            <div class="item-price">$14</div>
+          </div>
+          <div class="item-desc">Classic hot & sour soup with prawns, lemongrass, galangal, kaffir lime leaf & mushrooms.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span><span class="tag signature">Signature</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Tom Kha Gai <span class="thai">ต้มข่าไก่</span></div>
+            <div class="item-price">$13</div>
+          </div>
+          <div class="item-desc">Creamy coconut milk soup with chicken, galangal, lemongrass & oyster mushrooms.</div>
+          <div class="item-tags"><span class="tag gf">GF</span><span class="tag popular">Popular</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Tom Yum Veg <span class="thai">ต้มยำผัก</span></div>
+            <div class="item-price">$12</div>
+          </div>
+          <div class="item-desc">Vegetarian version of the classic tom yum, loaded with tofu & seasonal vegetables.</div>
+          <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag spicy">Spicy</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Khao Tom <span class="thai">ข้าวต้ม</span></div>
+            <div class="item-price">$11</div>
+          </div>
+          <div class="item-desc">Thai rice porridge with minced pork, ginger, fried garlic & coriander. Comforting and light.</div>
+          <div class="item-tags"><span class="tag gf">GF</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-text">Nahm Pla · Thai Dishes</div>
+    <div class="page-num">1</div>
+    <div class="page-footer-text">Washington, D.C.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAGE 2 — Salads & Mains
+══════════════════════════════════════════════ -->
+<div class="menu-page">
+  <div class="deco-blob" style="width:220px;height:220px;bottom:-40px;left:-60px;opacity:0.3;"></div>
+  <div class="menu-page-inner">
+
+    <div class="page-header">
+      <div class="page-header-logo">
+        Nahm Pla
+        <span>Thai Dishes</span>
+      </div>
+      <div class="page-header-tagline">Washington, D.C.</div>
+    </div>
+
+    <!-- SALADS -->
+    <div class="section">
+      <div class="section-title">Salads</div>
+      <div class="section-subtitle">Fresh & Vibrant · ยำ</div>
+
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Som Tum <span class="thai">ส้มตำไทย</span></div>
+            <div class="item-price">$12</div>
+          </div>
+          <div class="item-desc">Green papaya salad with tomatoes, green beans, peanuts, dried shrimp & chili in lime-fish sauce dressing.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag signature">Signature</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Larb Gai <span class="thai">ลาบไก่</span></div>
+            <div class="item-price">$13</div>
+          </div>
+          <div class="item-desc">Minced chicken salad with toasted rice powder, mint, shallots, fish sauce & chili.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Yum Woon Sen <span class="thai">ยำวุ้นเส้น</span></div>
+            <div class="item-price">$13</div>
+          </div>
+          <div class="item-desc">Glass noodle salad with shrimp, pork, celery, tomato, onion & chili-lime dressing.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag popular">Popular</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Yum Talay <span class="thai">ยำทะเล</span></div>
+            <div class="item-price">$16</div>
+          </div>
+          <div class="item-desc">Spicy seafood salad with shrimp, squid, mussels, lemongrass & lime juice.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="fish-sep">— 🌿 —</div>
+
+    <!-- MAINS -->
+    <div class="section">
+      <div class="section-title">Main Dishes</div>
+      <div class="section-subtitle">Heart of the table · อาหารจานหลัก</div>
+
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Pad Thai <span class="thai">ผัดไทย</span></div>
+            <div class="item-price">$17</div>
+          </div>
+          <div class="item-desc">Stir-fried rice noodles with egg, bean sprouts, green onion, peanuts & tamarind sauce. Choice of chicken, shrimp, or tofu.</div>
+          <div class="item-tags"><span class="tag signature">Signature</span><span class="tag popular">Popular</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Pad See Ew <span class="thai">ผัดซีอิ๊ว</span></div>
+            <div class="item-price">$17</div>
+          </div>
+          <div class="item-desc">Flat rice noodles stir-fried with egg, Chinese broccoli, soy sauce & black pepper. Choice of protein.</div>
+          <div class="item-tags"><span class="tag popular">Popular</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Basil Stir-Fry <span class="thai">ผัดกะเพรา</span></div>
+            <div class="item-price">$16</div>
+          </div>
+          <div class="item-desc">Spicy holy basil stir-fry with your choice of protein, chili & oyster sauce. Served with jasmine rice & fried egg.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span><span class="tag signature">Signature</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Pad Kra Pao Talay <span class="thai">ผัดกะเพราทะเล</span></div>
+            <div class="item-price">$20</div>
+          </div>
+          <div class="item-desc">Seafood holy basil stir-fry with shrimp, squid & fish. Bold, fragrant & spicy.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Massaman Curry <span class="thai">แกงมัสมั่น</span></div>
+            <div class="item-price">$18</div>
+          </div>
+          <div class="item-desc">Rich, mild curry with tender beef, potato, onion, peanuts & coconut milk. A beloved southern Thai classic.</div>
+          <div class="item-tags"><span class="tag popular">Popular</span><span class="tag gf">GF</span></div>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-row">
+            <div class="item-name">Green Curry <span class="thai">แกงเขียวหวาน</span></div>
+            <div class="item-price">$17</div>
+          </div>
+          <div class="item-desc">Aromatic green curry with your choice of protein, Thai eggplant, bamboo shoots & sweet basil in coconut milk.</div>
+          <div class="item-tags"><span class="tag spicy">Spicy</span><span class="tag gf">GF</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-text">Nahm Pla · Thai Dishes</div>
+    <div class="page-num">2</div>
+    <div class="page-footer-text">Washington, D.C.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAGE 3 — Rice, Noodles, Drinks & Desserts
+══════════════════════════════════════════════ -->
+<div class="menu-page">
+  <div class="deco-blob" style="width:200px;height:200px;top:-50px;left:-60px;opacity:0.3;"></div>
+  <div class="menu-page-inner">
+
+    <div class="page-header">
+      <div class="page-header-logo">
+        Nahm Pla
+        <span>Thai Dishes</span>
+      </div>
+      <div class="page-header-tagline">Washington, D.C.</div>
+    </div>
+
+    <div class="two-col-layout">
+
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- RICE & NOODLES -->
+        <div class="section">
+          <div class="section-title">Rice & Noodles</div>
+          <div class="section-subtitle">ข้าวและเส้น</div>
+
+          <div class="menu-items single-col">
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Khao Pad <span class="thai">ข้าวผัด</span></div>
+                <div class="item-price">$15</div>
+              </div>
+              <div class="item-desc">Classic Thai fried rice with egg, onion & green onion. Choice of chicken, shrimp, or tofu.</div>
+              <div class="item-tags"><span class="tag popular">Popular</span><span class="tag gf">GF</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Pineapple Fried Rice <span class="thai">ข้าวผัดสับปะรด</span></div>
+                <div class="item-price">$17</div>
+              </div>
+              <div class="item-desc">Fragrant fried rice served in a pineapple shell with raisins, cashews, curry powder & shrimp.</div>
+              <div class="item-tags"><span class="tag signature">Signature</span><span class="tag gf">GF</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Khao Soi <span class="thai">ข้าวซอย</span></div>
+                <div class="item-price">$18</div>
+              </div>
+              <div class="item-desc">Northern Thai coconut curry noodle soup with crispy egg noodles, pickled mustard greens & shallots.</div>
+              <div class="item-tags"><span class="tag popular">Popular</span><span class="tag signature">Signature</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Boat Noodles <span class="thai">ก๋วยเตี๋ยวเรือ</span></div>
+                <div class="item-price">$16</div>
+              </div>
+              <div class="item-desc">Rich pork blood broth with rice noodles, tender pork, morning glory & fried garlic.</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Jasmine Rice <span class="thai">ข้าวหอมมะลิ</span></div>
+                <div class="item-price">$3</div>
+              </div>
+              <div class="item-desc">Steamed fragrant Thai jasmine rice.</div>
+              <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- DESSERTS -->
+        <div class="section">
+          <div class="section-title">Desserts</div>
+          <div class="section-subtitle">ของหวาน</div>
+
+          <div class="menu-items single-col">
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Mango Sticky Rice <span class="thai">ข้าวเหนียวมะม่วง</span></div>
+                <div class="item-price">$10</div>
+              </div>
+              <div class="item-desc">Sweet sticky rice with fresh mango slices & coconut cream. A timeless Thai classic.</div>
+              <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span><span class="tag popular">Popular</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Tub Tim Grob <span class="thai">ทับทิมกรอบ</span></div>
+                <div class="item-price">$8</div>
+              </div>
+              <div class="item-desc">Ruby chestnuts in chilled coconut milk with jackfruit & crushed ice.</div>
+              <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Thai Tea Crème Brûlée</div>
+                <div class="item-price">$9</div>
+              </div>
+              <div class="item-desc">Classic crème brûlée infused with fragrant Thai tea. House specialty.</div>
+              <div class="item-tags"><span class="tag signature">Signature</span></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <!-- DRINKS -->
+        <div class="section">
+          <div class="section-title">Drinks</div>
+          <div class="section-subtitle">เครื่องดื่ม</div>
+
+          <div class="menu-items single-col">
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Thai Iced Tea <span class="thai">ชาไทย</span></div>
+                <div class="item-price">$5</div>
+              </div>
+              <div class="item-desc">Sweetened spiced black tea with condensed milk over ice.</div>
+              <div class="item-tags"><span class="tag popular">Popular</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Thai Green Tea <span class="thai">ชาเขียวไทย</span></div>
+                <div class="item-price">$5</div>
+              </div>
+              <div class="item-desc">Fragrant green tea with honey & milk. Served hot or iced.</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Nam Manao <span class="thai">น้ำมะนาว</span></div>
+                <div class="item-price">$4</div>
+              </div>
+              <div class="item-desc">Refreshing Thai limeade with sea salt & sugar syrup.</div>
+              <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Coconut Water <span class="thai">น้ำมะพร้าว</span></div>
+                <div class="item-price">$5</div>
+              </div>
+              <div class="item-desc">Fresh young coconut water. Natural & refreshing.</div>
+              <div class="item-tags"><span class="tag vegan">Vegan</span><span class="tag gf">GF</span></div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Singha Beer</div>
+                <div class="item-price">$7</div>
+              </div>
+              <div class="item-desc">Classic Thai lager. Clean, crisp, and perfect with spicy dishes.</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Chang Beer</div>
+                <div class="item-price">$7</div>
+              </div>
+              <div class="item-desc">Smooth & mild Thai lager. A local favorite.</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">House White / Red Wine</div>
+                <div class="item-price">$9</div>
+              </div>
+              <div class="item-desc">Ask your server for today's selection.</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-row">
+                <div class="item-name">Soft Drinks</div>
+                <div class="item-price">$3</div>
+              </div>
+              <div class="item-desc">Coke, Diet Coke, Sprite, Ginger Ale.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- KEY / LEGEND -->
+        <div class="callout">
+          <div class="callout-title">🌿 Good to Know</div>
+          <div class="callout-text">
+            <span style="background:rgba(255,255,255,0.25);padding:2px 7px;border-radius:12px;font-size:10px;font-weight:700;margin-right:6px;">VEGAN</span> Plant-based &nbsp;
+            <span style="background:rgba(255,255,255,0.25);padding:2px 7px;border-radius:12px;font-size:10px;font-weight:700;margin-right:6px;">GF</span> Gluten-free &nbsp;
+            <span style="background:rgba(255,255,255,0.25);padding:2px 7px;border-radius:12px;font-size:10px;font-weight:700;margin-right:6px;">SPICY</span> Contains chili<br><br>
+            Spice levels can be adjusted on request. Please inform your server of any allergies or dietary requirements. Most dishes can be made vegan upon request.
+          </div>
+        </div>
+
+        <div class="allergen-note">
+          <strong>Allergen Notice:</strong> Our dishes may contain nuts, shellfish, soy, gluten, and dairy. Cross-contamination may occur in our kitchen. Please speak with your server for full allergen information.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-text">Nahm Pla · Thai Dishes</div>
+    <div class="page-num">3</div>
+    <div class="page-footer-text">Washington, D.C.</div>
+  </div>
+</div>
+
+</body>
+</html>
